@@ -5,10 +5,42 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Khojki:wght@400;500&family=Roboto+Slab&display=swap"
+        rel="stylesheet">
     <title>Paper Rock Scissors</title>
 </head>
 
 <body>
+    <main class="main">
+        <div class="players-section">
+            <div class="players player">
+                <p>Chosen Player</p>
+                <p>0</p>
+            </div>
+            <div class="players computer-player">
+                <p>Computer</p>
+                <p>0</p>
+            </div>
+        </div>
+        <div class="buttons">
+            <div class="img-container">
+                <img id="paper" src="images/paper.png" alt="" class="btn" name="paper">
+                <p>Paper</p>
+            </div>
+            <div class="img-container">
+                <img id="rock" src="images/rock.png" alt="" class="btn" name="rock">
+                <p>Rock</p>
+            </div>
+            <div class="img-container">
+                <img id="scissors" src="images/scissors.png" alt="" class="btn" name="scissors">
+                <p>Scissors</p>
+            </div>
+
+        </div>
+    </main>
 
     <script src="app.js"></script>
 </body>

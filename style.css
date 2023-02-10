@@ -1,0 +1,75 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+
+body,
+h1,
+h2,
+h3,
+p {
+    margin: 0;
+    padding: 0;
+    color: #f8fcfb;
+    font-family: 'Noto Serif Khojki', serif;
+    font-family: 'Roboto Slab', serif;
+}
+
+button {
+    border: none;
+    background: none;
+}
+
+img {
+    width: 100%;
+}
+
+.main {
+    width: 100%;
+    height: 100vh;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+
+}
+
+.players-section {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+
+}
+
+.players {
+    font-size: 2rem;
+    text-transform: uppercase;
+    font-weight: 400;
+    text-align: center;
+    background: url('images/player-background.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #19181c;
+    padding: 5rem;
+}
+
+.buttons {
+    display: flex;
+    max-width: 500px;
+}
+
+
+.img-container {
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+.btn:hover {
+    transform: scale(1.1);
+}
+
+
+/* #2a080c */
