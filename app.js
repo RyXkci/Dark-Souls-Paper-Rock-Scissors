@@ -1,5 +1,17 @@
-const playerText = document.querySelector('.player');
-const computerText = document.querySelector('.computer');
+const buttons = Array.from(document.querySelectorAll('.btn'));
+
+const playerScoreText = document.querySelector('#playerScoreText');
+const computerScoreText = document.querySelector('#computerScoreText');
+
+let playerSelection = '';
+
+console.log(buttons)
+
+buttons.forEach((button => {
+    button.addEventListener('click', () => {
+        playerSelection = button.name
+    })
+}))
 
 
 function getComputerChoice() {
@@ -18,16 +30,16 @@ function playRound(playerSelection, computerSelection) {
             playerScore++
             console.log(`***Player score is ${playerScore}***`)
             console.log(`***Computer Score is ${computerScore}***`)
-            playerText.innerText = playerScore;
-            computerText.innerText = computerScore;
+            playerScoreText.innerText = playerScore;
+            computerScoreText.innerText = computerScore;
             return `You won! ${playerSelection} beats ${computerSelection}!`
         }
         else {
             computerScore++
             console.log(`***Player score is ${playerScore}***`)
             console.log(`***Computer Score is ${computerScore}***`)
-            playerText.innerText = playerScore;
-            computerText.innerText = computerScore;
+            playerScoreText.innerText = playerScore;
+            computerScoreText.innerText = computerScore;
             return `You lost! ${computerSelection} beats ${playerSelection}!`
         }
 
@@ -36,16 +48,16 @@ function playRound(playerSelection, computerSelection) {
             playerScore++
             console.log(`***Player score is ${playerScore}***`)
             console.log(`***Computer Score is ${computerScore}***`)
-            playerText.innerText = playerScore;
-            computerText.innerText = computerScore;
+            playerScoreText.innerText = playerScore;
+            computerScoreText.innerText = computerScore;
             return `You won! ${playerSelection} beats ${computerSelection}!`
         }
         else {
             computerScore++
             console.log(`***Player score is ${playerScore}***`)
             console.log(`***Computer Score is ${computerScore}***`)
-            playerText.innerText = playerScore;
-            computerText.innerText = computerScore;
+            playerScoreText.innerText = playerScore;
+            computerScoreText.innerText = computerScore;
             return `You lost! ${computerSelection} beats ${playerSelection}!`
         }
     }
@@ -54,16 +66,16 @@ function playRound(playerSelection, computerSelection) {
             playerScore++
             console.log(`***Player score is ${playerScore}***`)
             console.log(`***Computer Score is ${computerScore}***`)
-            playerText.innerText = playerScore;
-            computerText.innerText = computerScore;
+            playerScoreText.innerText = playerScore;
+            computerScoreText.innerText = computerScore;
             return `You won! ${playerSelection} beats ${computerSelection}!`
         }
         else {
             computerScore++
             console.log(`***Player score is ${playerScore}***`)
             console.log(`***Computer Score is ${computerScore}***`)
-            playerText.innerText = playerScore;
-            computerText.innerText = computerScore;
+            playerScoreText.innerText = playerScore;
+            computerScoreText.innerText = computerScore;
             return `You lost! ${computerSelection} beats ${playerSelection}!`
         }
     }
@@ -76,7 +88,7 @@ function game() {
     for (let i = 0; i < 5; i++) {
 
         const computerSelection = getComputerChoice();
-        const playerSelection = prompt("Pick paper, rock or scissor".toLowerCase());
+        playerSelection = playerSelection;
         console.log(playRound(playerSelection, computerSelection))
     }
     if (playerScore > computerScore) {
