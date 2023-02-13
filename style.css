@@ -14,7 +14,6 @@ p {
     padding: 0;
     color: #f8fcfb;
     font-family: 'Noto Serif Khojki', serif;
-    font-family: 'Roboto Slab', serif;
 }
 
 button {
@@ -32,7 +31,48 @@ img {
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: rgba(0, 0, 0, .7);
+    background-color: rgba(0, 0, 0, .8);
+    transform: scale(0);
+}
+
+.game-finished {
+    z-index: 1000;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transform: scale(0);
+    transition: all 500ms ease-in-out;
+}
+
+.toggled {
+    transform: scale(1);
+    opacity: 1;
+}
+
+.game-finished-text {
+    font-weight: 300;
+    text-align: center;
+    font-size: 5rem;
+    background-color: black;
+}
+
+.won {
+    color: #d8c47d;
+}
+
+.lost {
+    color: #4c0001;
+}
+
+.reset {
+    color: white;
+    font-size: 1.5rem;
+    font-family: inherit;
+}
+
+.reset:hover {
+    transform: scale(1.1);
 }
 
 .main {
@@ -67,6 +107,11 @@ img {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.players span {
+    font-size: .5em;
+    display: block;
 }
 
 /* HEALTHBAR */
@@ -125,4 +170,23 @@ img {
 
 .btn:hover {
     transform: scale(1.1);
+}
+
+@media screen and (max-width: 700px) {
+    .title {
+        font-size: 1.2rem;
+        text-align: center;
+    }
+
+    .players {
+        font-size: 1rem;
+    }
+
+    .players-section {
+        flex-direction: column;
+    }
+
+    .buttons {
+        padding: 2rem;
+    }
 }

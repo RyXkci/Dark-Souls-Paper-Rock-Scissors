@@ -6,14 +6,19 @@ const computerScoreText = document.querySelector('#computerScoreText');
 const playerHealthBar = document.querySelector('#playerHealthBar');
 const computerHealthBar = document.querySelector('#computerHealthBar');
 
+const overlay = document.querySelector('#overlay');
+const gameFinished = document.querySelector('#gameFinished');
+const gameFinishedText = document.querySelector('#gameFinishedText');
+const resetButton = document.querySelector('#reset');
+
 console.log(playerHealthBar)
 
 let playerSelection = '';
 let playerScore = 0;
 let computerScore = 0;
 
-const playerHealthBars = [];
-const computerHealthBars = [];
+let playerHealthBars = [];
+let computerHealthBars = [];
 
 let totalRounds = 0;
 
@@ -105,14 +110,26 @@ function playRound(playerSelection, computerSelection) {
 function checkRounds() {
     if (totalRounds === 5) {
         if (playerScore > computerScore) {
-            console.log('You won')
+
+            endGame('Victory Achieved', 'won')
         }
         else {
-            console.log('You lost')
-
+            endGame('You Died', 'lost')
         }
     }
 }
+
+function endGame(gameResult, colorClass) {
+    overlay.classList.add('toggled');
+    gameFinishedText.innerText = gameResult
+    gameFinishedText.classList.add(colorClass)
+    setTimeout(() => {
+        gameFinished.classList.add('toggled');
+    }, 500)
+}
+
+resetButton.addEventListener('click', reset);
+
 
 function reset() {
     computerHealthBars.forEach(healthbar => {
@@ -126,4 +143,14 @@ function reset() {
         newDiv.classList.add('player-healthbar')
         playerHealthBar.appendChild(newDiv)
     })
+    playerScore = 0;
+    computerScore = 0;
+    playerScoreText.innerText = 0;
+    computerScoreText.innerText = 0;
+    overlay.classList.remove('toggled');
+    gameFinished.classList.remove('toggled');
+    gameFinishedText.innerText = '';
+    playerHealthBars = [];
+    computerHealthBars = [];
+    totalRounds = 0;
 }

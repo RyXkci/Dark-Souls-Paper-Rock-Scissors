@@ -14,8 +14,14 @@
 </head>
 
 <body>
-    <div class="overlay"></div>
+    <div id="overlay" class="overlay"></div>
     <main class="main">
+        <div id="gameFinished" class="game-finished">
+            <h1 id="gameFinishedText" class="game-finished-text"></h1>
+            <button id="reset" class="reset">Play again?</button>
+        </div>
+        <h1 class="title">Welcome To paper, rock, scissors</h1>
+        <p class="subtitle">First to 5 wins! (evens don't count!)</p>
         <div class="players-section">
             <div class="players player">
                 <p>Chosen Player</p>
@@ -29,7 +35,7 @@
                 </div>
             </div>
             <div class="players computer-player">
-                <p>Computer</p>
+                <p>Computer, <span>Lord of the Random Number</span></p>
                 <p id="computerScoreText">0</p>
                 <div id="computerHealthBar" class="healthbar">
                     <div class="computer-healthbar"></div>
