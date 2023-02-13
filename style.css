@@ -49,11 +49,58 @@ img {
     text-transform: uppercase;
     font-weight: 400;
     text-align: center;
-    background: url('images/player-background.png');
+    background: url('images/player-background-1.png');
     background-repeat: no-repeat;
     background-size: cover;
-    background-color: #19181c;
+    /*  background-color: #19181c; */
     padding: 5rem;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* HEALTHBAR */
+
+/* RED COLOR: #270716 */
+
+.healthbar {
+    display: flex;
+    width: 250px;
+    height: 20px;
+    margin-top: 2rem;
+    position: relative;
+}
+
+.healthbar::before,
+.healthbar::after {
+    content: '';
+    position: absolute;
+}
+
+.healthbar::before {
+    top: 0;
+    bottom: 0;
+    left: -10px;
+    right: -10px;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+}
+
+.healthbar::after {
+    top: -10px;
+    bottom: -10px;
+    left: 0;
+    right: 0;
+    border-left: 2px solid black;
+    border-right: 2px solid black;
+}
+
+.player-healthbar,
+.computer-healthbar {
+    background-color: #270716;
+    border-right: 1px solid black;
+    width: 50px;
 }
 
 .buttons {
@@ -70,6 +117,3 @@ img {
 .btn:hover {
     transform: scale(1.1);
 }
-
-
-/* #2a080c */
