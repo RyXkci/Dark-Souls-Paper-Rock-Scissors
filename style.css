@@ -54,7 +54,7 @@ img {
     font-weight: 300;
     text-align: center;
     font-size: 5rem;
-    background-color: black;
+    background-color: rgba(0, 0, 0, .5);
 }
 
 .won {
@@ -94,14 +94,14 @@ img {
 }
 
 .players {
-    font-size: 2rem;
+    font-size: 1.8rem;
     text-transform: uppercase;
     font-weight: 400;
     text-align: center;
     background: url('images/player-background-1.png');
     background-repeat: no-repeat;
     background-size: cover;
-    /*  background-color: #19181c; */
+    box-shadow: 0 0 .2em rgba(216, 196, 125, .2);
     padding: 5rem;
     border-radius: 5px;
     display: flex;
@@ -112,6 +112,7 @@ img {
 .players span {
     font-size: .5em;
     display: block;
+    line-height: .1;
 }
 
 /* HEALTHBAR */
@@ -157,6 +158,16 @@ img {
     width: 50px;
 }
 
+/*  Choices section */
+
+.choices-container {
+    width: calc(100% + 5rem);
+    margin-top: 1rem;
+    font-size: 1rem;
+    display: flex;
+    justify-content: space-around;
+}
+
 .buttons {
     display: flex;
     max-width: 500px;
@@ -172,6 +183,10 @@ img {
     transform: scale(1.1);
 }
 
+.btn:active {
+    transform: scale(0.98);
+}
+
 @media screen and (max-width: 700px) {
     .title {
         font-size: 1.2rem;
@@ -179,7 +194,7 @@ img {
     }
 
     .players {
-        font-size: 1rem;
+        font-size: 1.3rem;
     }
 
     .players-section {

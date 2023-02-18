@@ -6,6 +6,10 @@ const computerScoreText = document.querySelector('#computerScoreText');
 const playerHealthBar = document.querySelector('#playerHealthBar');
 const computerHealthBar = document.querySelector('#computerHealthBar');
 
+
+const playerChoicesContainer = document.querySelector('#playerChoicesContainer');
+const computerChoicesContainer = document.querySelector('#computerChoicesContainer');
+
 const overlay = document.querySelector('#overlay');
 const gameFinished = document.querySelector('#gameFinished');
 const gameFinishedText = document.querySelector('#gameFinishedText');
@@ -14,6 +18,7 @@ const resetButton = document.querySelector('#reset');
 console.log(playerHealthBar)
 
 let playerSelection = '';
+let computerSelection = '';
 let playerScore = 0;
 let computerScore = 0;
 
@@ -34,8 +39,24 @@ buttons.forEach((button => {
         playerSelection = button.name
         computerSelection = getComputerChoice();
         playRound(playerSelection, computerSelection)
+        addPlayerSelection(playerSelection)
+        addComputerSelection(computerSelection)
     })
 }))
+
+function addPlayerSelection(selection) {
+    const choiceDiv = document.createElement('div');
+    choiceDiv.classList.add('choice')
+    choiceDiv.innerText = selection;
+    playerChoicesContainer.appendChild(choiceDiv);
+}
+
+function addComputerSelection(selection) {
+    const choiceDiv = document.createElement('div');
+    choiceDiv.classList.add('choice')
+    choiceDiv.innerText = selection;
+    computerChoicesContainer.appendChild(choiceDiv);
+}
 
 
 
@@ -118,6 +139,8 @@ function checkRounds() {
         }
     }
 }
+
+
 
 function endGame(gameResult, colorClass) {
     overlay.classList.add('toggled');
