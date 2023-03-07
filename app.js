@@ -15,7 +15,7 @@ const gameFinished = document.querySelector('#gameFinished');
 const gameFinishedText = document.querySelector('#gameFinishedText');
 const resetButton = document.querySelector('#reset');
 
-console.log(playerHealthBar)
+/* console.log(playerHealthBar) */
 
 let playerSelection = '';
 let computerSelection = '';
@@ -58,7 +58,10 @@ function addComputerSelection(selection) {
     computerChoicesContainer.appendChild(choiceDiv);
 }
 
+const playerDiv = document.querySelector('.player')
+const computerDiv = document.querySelector('.computer')
 
+/* resultsFunc(computerScoreText, playerScoreText) */
 
 function playRound(playerSelection, computerSelection) {
     console.log(playerSelection)
@@ -68,60 +71,66 @@ function playRound(playerSelection, computerSelection) {
         if (computerSelection === 'rock') {
             playerScore++
             totalRounds++
+            resultsFunc({ score: playerScore, winner: playerScoreText })
             computerHealthBars.push(computerHealthBar.removeChild(computerHealthBar.lastElementChild))
             console.log(`***Player score is ${playerScore}***`)
             console.log(`***Computer Score is ${computerScore}***`)
-            playerScoreText.innerText = playerScore;
-            computerScoreText.innerText = computerScore;
+            /* playerScoreText.innerText = playerScore;
+            computerScoreText.innerText = computerScore; */
         }
         else {
             computerScore++
             totalRounds++
+            resultsFunc({ score: computerScore, winner: computerScoreText })
             playerHealthBars.push(playerHealthBar.removeChild(playerHealthBar.lastElementChild));
             console.log(`***Player score is ${playerScore}***`)
             console.log(`***Computer Score is ${computerScore}***`)
-            playerScoreText.innerText = playerScore;
-            computerScoreText.innerText = computerScore;
+            /* playerScoreText.innerText = playerScore;
+            computerScoreText.innerText = computerScore; */
         }
 
     } else if (playerSelection === 'rock') {
         if (computerSelection === 'scissors') {
             playerScore++
             totalRounds++
+            resultsFunc({ score: playerScore, winner: playerScoreText })
             computerHealthBars.push(computerHealthBar.removeChild(computerHealthBar.lastElementChild))
             console.log(`***Player score is ${playerScore}***`)
             console.log(`***Computer Score is ${computerScore}***`)
-            playerScoreText.innerText = playerScore;
-            computerScoreText.innerText = computerScore;
+            /* playerScoreText.innerText = playerScore;
+            computerScoreText.innerText = computerScore; */
         }
         else {
             computerScore++
             totalRounds++
+            resultsFunc({ score: computerScore, winner: computerScoreText })
             playerHealthBars.push(playerHealthBar.removeChild(playerHealthBar.lastElementChild));
             console.log(`***Player score is ${playerScore}***`)
             console.log(`***Computer Score is ${computerScore}***`)
-            playerScoreText.innerText = playerScore;
-            computerScoreText.innerText = computerScore;
+            /* playerScoreText.innerText = playerScore;
+            computerScoreText.innerText = computerScore; */
         }
     }
     else if (playerSelection === 'scissors') {
         if (computerSelection === 'paper') {
             playerScore++
             totalRounds++
+            resultsFunc({ score: playerScore, winner: playerScoreText })
             computerHealthBars.push(computerHealthBar.removeChild(computerHealthBar.lastElementChild))
             console.log(`***Player score is ${playerScore}***`)
             console.log(`***Computer Score is ${computerScore}***`)
-            playerScoreText.innerText = playerScore;
-            computerScoreText.innerText = computerScore;
+            /* playerScoreText.innerText = playerScore;
+            computerScoreText.innerText = computerScore; */
         }
         else {
             computerScore++
             totalRounds++
+            resultsFunc({ score: computerScore, winner: computerScoreText })
             playerHealthBars.push(playerHealthBar.removeChild(playerHealthBar.lastElementChild));
             console.log(`***Player score is ${playerScore}***`)
             console.log(`***Computer Score is ${computerScore}***`)
-            playerScoreText.innerText = playerScore;
-            computerScoreText.innerText = computerScore;
+            /* playerScoreText.innerText = playerScore;
+            computerScoreText.innerText = computerScore; */
 
         }
     }
