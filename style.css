@@ -57,6 +57,7 @@ img {
     background-color: rgba(0, 0, 0, .5);
 }
 
+
 .won {
     color: #d8c47d;
 }
@@ -151,8 +152,8 @@ img {
     border-right: 2px solid black;
 }
 
-.player-healthbar,
-.computer-healthbar {
+.player-healthsection,
+.computer-healthsection {
     background-color: #270716;
     border-right: 1px solid black;
     width: 50px;
@@ -161,11 +162,18 @@ img {
 /*  Choices section */
 
 .choices-container {
-    width: calc(100% + 5rem);
+    /*  width: calc(100% + 5rem); */
+    max-width: 300px;
     margin-top: 1rem;
     font-size: 1rem;
     display: flex;
-    justify-content: space-around;
+    /*  justify-content: space-around; */
+    gap: .8em;
+    flex-wrap: wrap;
+}
+
+.choice {
+    font-size: .9em;
 }
 
 .buttons {

@@ -1,10 +1,13 @@
-const buttons = Array.from(document.querySelectorAll('.btn'));
+const buttons = document.querySelectorAll('.btn');
 
 const playerScoreText = document.querySelector('#playerScoreText');
 const computerScoreText = document.querySelector('#computerScoreText');
 
 const playerHealthBar = document.querySelector('#playerHealthBar');
 const computerHealthBar = document.querySelector('#computerHealthBar');
+
+let playerHealthBarCount = 5;
+let computerHealthBarCount = 5;
 
 
 const playerChoicesContainer = document.querySelector('#playerChoicesContainer');
@@ -15,15 +18,11 @@ const gameFinished = document.querySelector('#gameFinished');
 const gameFinishedText = document.querySelector('#gameFinishedText');
 const resetButton = document.querySelector('#reset');
 
-/* console.log(playerHealthBar) */
 
 let playerSelection = '';
 let computerSelection = '';
 let playerScore = 0;
 let computerScore = 0;
-
-let playerHealthBars = [];
-let computerHealthBars = [];
 
 let totalRounds = 0;
 
@@ -58,11 +57,6 @@ function addComputerSelection(selection) {
     computerChoicesContainer.appendChild(choiceDiv);
 }
 
-const playerDiv = document.querySelector('.player')
-const computerDiv = document.querySelector('.computer')
-
-/* resultsFunc(computerScoreText, playerScoreText) */
-
 function playRound(playerSelection, computerSelection) {
     console.log(playerSelection)
     console.log(computerSelection)
@@ -71,66 +65,54 @@ function playRound(playerSelection, computerSelection) {
         if (computerSelection === 'rock') {
             playerScore++
             totalRounds++
-            resultsFunc({ score: playerScore, winner: playerScoreText })
-            computerHealthBars.push(computerHealthBar.removeChild(computerHealthBar.lastElementChild))
+            resultsFunc({ score: playerScore, winner: playerScoreText, healthBar: computerHealthBar });
+            computerHealthBarCount--;
             console.log(`***Player score is ${playerScore}***`)
             console.log(`***Computer Score is ${computerScore}***`)
-            /* playerScoreText.innerText = playerScore;
-            computerScoreText.innerText = computerScore; */
         }
         else {
             computerScore++
             totalRounds++
-            resultsFunc({ score: computerScore, winner: computerScoreText })
-            playerHealthBars.push(playerHealthBar.removeChild(playerHealthBar.lastElementChild));
+            resultsFunc({ score: computerScore, winner: computerScoreText, healthBar: playerHealthBar });
+            playerHealthBarCount--;
             console.log(`***Player score is ${playerScore}***`)
             console.log(`***Computer Score is ${computerScore}***`)
-            /* playerScoreText.innerText = playerScore;
-            computerScoreText.innerText = computerScore; */
         }
 
     } else if (playerSelection === 'rock') {
         if (computerSelection === 'scissors') {
             playerScore++
             totalRounds++
-            resultsFunc({ score: playerScore, winner: playerScoreText })
-            computerHealthBars.push(computerHealthBar.removeChild(computerHealthBar.lastElementChild))
+            resultsFunc({ score: playerScore, winner: playerScoreText, healthBar: computerHealthBar });
+            computerHealthBarCount--;
             console.log(`***Player score is ${playerScore}***`)
             console.log(`***Computer Score is ${computerScore}***`)
-            /* playerScoreText.innerText = playerScore;
-            computerScoreText.innerText = computerScore; */
         }
         else {
             computerScore++
             totalRounds++
-            resultsFunc({ score: computerScore, winner: computerScoreText })
-            playerHealthBars.push(playerHealthBar.removeChild(playerHealthBar.lastElementChild));
+            resultsFunc({ score: computerScore, winner: computerScoreText, healthBar: playerHealthBar });
+            playerHealthBarCount--;
             console.log(`***Player score is ${playerScore}***`)
             console.log(`***Computer Score is ${computerScore}***`)
-            /* playerScoreText.innerText = playerScore;
-            computerScoreText.innerText = computerScore; */
         }
     }
     else if (playerSelection === 'scissors') {
         if (computerSelection === 'paper') {
             playerScore++
             totalRounds++
-            resultsFunc({ score: playerScore, winner: playerScoreText })
-            computerHealthBars.push(computerHealthBar.removeChild(computerHealthBar.lastElementChild))
+            resultsFunc({ score: playerScore, winner: playerScoreText, healthBar: computerHealthBar });
+            computerHealthBarCount--;
             console.log(`***Player score is ${playerScore}***`)
             console.log(`***Computer Score is ${computerScore}***`)
-            /* playerScoreText.innerText = playerScore;
-            computerScoreText.innerText = computerScore; */
         }
         else {
             computerScore++
             totalRounds++
-            resultsFunc({ score: computerScore, winner: computerScoreText })
-            playerHealthBars.push(playerHealthBar.removeChild(playerHealthBar.lastElementChild));
+            resultsFunc({ score: computerScore, winner: computerScoreText, healthBar: playerHealthBar });
+            playerHealthBarCount--;
             console.log(`***Player score is ${playerScore}***`)
             console.log(`***Computer Score is ${computerScore}***`)
-            /* playerScoreText.innerText = playerScore;
-            computerScoreText.innerText = computerScore; */
 
         }
     }
@@ -148,9 +130,6 @@ function checkRounds() {
         }
     }
 }
-
-
-
 function endGame(gameResult, colorClass) {
     overlay.classList.add('toggled');
     gameFinishedText.innerText = gameResult
@@ -163,18 +142,19 @@ function endGame(gameResult, colorClass) {
 resetButton.addEventListener('click', reset);
 
 
-function reset() {
-    computerHealthBars.forEach(healthbar => {
-        let newDiv = document.createElement('div')
-        newDiv.classList.add('player-healthbar')
-        computerHealthBar.appendChild(newDiv)
-    })
 
-    playerHealthBars.forEach(healthbar => {
-        let newDiv = document.createElement('div')
-        newDiv.classList.add('player-healthbar')
-        playerHealthBar.appendChild(newDiv)
-    })
+function reset() {
+    console.log(playerHealthBarCount)
+    console.log(computerHealthBarCount)
+
+    reAddDivs(playerHealthBarCount, 'player-healthsection', playerHealthBar);
+    reAddDivs(computerHealthBarCount, 'computer-healthsection', computerHealthBar);
+
+    removeChildren(playerChoicesContainer);
+    removeChildren(computerChoicesContainer);
+
+    playerHealthBarCount = 5;
+    computerHealthBarCount = 5;
     playerScore = 0;
     computerScore = 0;
     playerScoreText.innerText = 0;
@@ -182,7 +162,6 @@ function reset() {
     overlay.classList.remove('toggled');
     gameFinished.classList.remove('toggled');
     gameFinishedText.innerText = '';
-    playerHealthBars = [];
-    computerHealthBars = [];
     totalRounds = 0;
+
 }
