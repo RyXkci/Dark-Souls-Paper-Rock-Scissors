@@ -10,6 +10,7 @@ let playerHealthBarCount = 5;
 let computerHealthBarCount = 5;
 
 
+
 const playerChoicesContainer = document.querySelector('#playerChoicesContainer');
 const computerChoicesContainer = document.querySelector('#computerChoicesContainer');
 
@@ -25,6 +26,7 @@ let playerScore = 0;
 let computerScore = 0;
 
 let totalRounds = 0;
+
 
 function getComputerChoice() {
     const choices = ['paper', 'rock', 'scissors'];
@@ -65,7 +67,7 @@ function playRound(playerSelection, computerSelection) {
         if (computerSelection === 'rock') {
             playerScore++
             totalRounds++
-            resultsFunc({ score: playerScore, winner: playerScoreText, healthBar: computerHealthBar });
+            resultsFunc(playerScore, playerScoreText, computerHealthBar);
             computerHealthBarCount--;
             console.log(`***Player score is ${playerScore}***`)
             console.log(`***Computer Score is ${computerScore}***`)
@@ -73,7 +75,7 @@ function playRound(playerSelection, computerSelection) {
         else {
             computerScore++
             totalRounds++
-            resultsFunc({ score: computerScore, winner: computerScoreText, healthBar: playerHealthBar });
+            resultsFunc(computerScore, computerScoreText, playerHealthBar);
             playerHealthBarCount--;
             console.log(`***Player score is ${playerScore}***`)
             console.log(`***Computer Score is ${computerScore}***`)
@@ -83,7 +85,7 @@ function playRound(playerSelection, computerSelection) {
         if (computerSelection === 'scissors') {
             playerScore++
             totalRounds++
-            resultsFunc({ score: playerScore, winner: playerScoreText, healthBar: computerHealthBar });
+            resultsFunc(playerScore, playerScoreText, computerHealthBar);
             computerHealthBarCount--;
             console.log(`***Player score is ${playerScore}***`)
             console.log(`***Computer Score is ${computerScore}***`)
@@ -91,7 +93,7 @@ function playRound(playerSelection, computerSelection) {
         else {
             computerScore++
             totalRounds++
-            resultsFunc({ score: computerScore, winner: computerScoreText, healthBar: playerHealthBar });
+            resultsFunc(computerScore, computerScoreText, playerHealthBar);
             playerHealthBarCount--;
             console.log(`***Player score is ${playerScore}***`)
             console.log(`***Computer Score is ${computerScore}***`)
@@ -101,7 +103,7 @@ function playRound(playerSelection, computerSelection) {
         if (computerSelection === 'paper') {
             playerScore++
             totalRounds++
-            resultsFunc({ score: playerScore, winner: playerScoreText, healthBar: computerHealthBar });
+            resultsFunc(playerScore, playerScoreText, computerHealthBar);
             computerHealthBarCount--;
             console.log(`***Player score is ${playerScore}***`)
             console.log(`***Computer Score is ${computerScore}***`)
@@ -109,7 +111,7 @@ function playRound(playerSelection, computerSelection) {
         else {
             computerScore++
             totalRounds++
-            resultsFunc({ score: computerScore, winner: computerScoreText, healthBar: playerHealthBar });
+            resultsFunc(computerScore, computerScoreText, playerHealthBar);
             playerHealthBarCount--;
             console.log(`***Player score is ${playerScore}***`)
             console.log(`***Computer Score is ${computerScore}***`)
@@ -118,6 +120,7 @@ function playRound(playerSelection, computerSelection) {
     }
     checkRounds()
 }
+
 
 function checkRounds() {
     if (totalRounds === 5) {
@@ -130,10 +133,11 @@ function checkRounds() {
         }
     }
 }
+
 function endGame(gameResult, colorClass) {
     overlay.classList.add('toggled');
     gameFinishedText.innerText = gameResult
-    gameFinishedText.classList.add(colorClass)
+    gameFinishedText.classList.toggle(colorClass)
     setTimeout(() => {
         gameFinished.classList.add('toggled');
     }, 500)
@@ -143,7 +147,7 @@ resetButton.addEventListener('click', reset);
 
 
 
-function reset() {
+function reset(className) {
     console.log(playerHealthBarCount)
     console.log(computerHealthBarCount)
 
@@ -162,6 +166,6 @@ function reset() {
     overlay.classList.remove('toggled');
     gameFinished.classList.remove('toggled');
     gameFinishedText.innerText = '';
+    gameFinishedText.classList.remove('won', 'lost')
     totalRounds = 0;
-
 }

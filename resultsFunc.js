@@ -1,8 +1,7 @@
-const resultsFunc = ({
+const resultsFunc = (
     score,
     winner,
-    healthBar
-}) => {
+    healthBar) => {
     winner.innerText = score;
     healthBar.removeChild(healthBar.lastElementChild);
 }
