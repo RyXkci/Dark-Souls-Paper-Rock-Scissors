@@ -76,6 +76,12 @@ img {
     transform: scale(1.1);
 }
 
+.header {
+    margin: 0 auto;
+    text-align: center;
+    padding: 1em;
+}
+
 .main {
     width: 100%;
     height: 100vh;
@@ -103,17 +109,23 @@ img {
     background-repeat: no-repeat;
     background-size: cover;
     box-shadow: 0 0 .2em rgba(216, 196, 125, .2);
-    padding: 5rem;
     border-radius: 5px;
+    padding: 1em 3em 1em 3em;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
+
 .players span {
     font-size: .5em;
     display: block;
     line-height: .1;
+}
+
+span.choice {
+    font-size: 1em;
+    line-height: 1.1;
 }
 
 /* HEALTHBAR */

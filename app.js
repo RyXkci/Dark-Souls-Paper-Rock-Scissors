@@ -46,17 +46,17 @@ buttons.forEach((button => {
 }))
 
 function addPlayerSelection(selection) {
-    const choiceDiv = document.createElement('div');
-    choiceDiv.classList.add('choice')
-    choiceDiv.innerText = selection;
-    playerChoicesContainer.appendChild(choiceDiv);
+    const choiceSpan = document.createElement('span');
+    choiceSpan.classList.add('choice')
+    choiceSpan.innerText = selection;
+    playerChoicesContainer.appendChild(choiceSpan);
 }
 
 function addComputerSelection(selection) {
-    const choiceDiv = document.createElement('div');
-    choiceDiv.classList.add('choice')
-    choiceDiv.innerText = selection;
-    computerChoicesContainer.appendChild(choiceDiv);
+    const choiceSpan = document.createElement('span');
+    choiceSpan.classList.add('choice')
+    choiceSpan.innerText = selection;
+    computerChoicesContainer.appendChild(choiceSpan);
 }
 
 function playRound(playerSelection, computerSelection) {
