@@ -6,6 +6,8 @@ const computerScoreText = document.querySelector('#computerScoreText');
 const playerHealthBar = document.querySelector('#playerHealthBar');
 const computerHealthBar = document.querySelector('#computerHealthBar');
 
+/* PlayerHealthBarCounts are here to be counted down every round when a healthbar div gets removed,
+that way then can be dynaically added back when reset is called */
 let playerHealthBarCount = 5;
 let computerHealthBarCount = 5;
 
@@ -45,6 +47,7 @@ buttons.forEach((button => {
     })
 }))
 
+// Adds 'paper, rock or scissors' choice to the players div //
 function addPlayerSelection(selection) {
     const choiceSpan = document.createElement('span');
     choiceSpan.classList.add('choice')
@@ -59,26 +62,27 @@ function addComputerSelection(selection) {
     computerChoicesContainer.appendChild(choiceSpan);
 }
 
+
 function playRound(playerSelection, computerSelection) {
-    console.log(playerSelection)
-    console.log(computerSelection)
-    if (playerSelection === computerSelection) return `It's a draw! Both ${playerSelection}`
+    /*  console.log(playerSelection)
+     console.log(computerSelection) */
+    if (playerSelection === computerSelection) return // Escapes to carry on with function in case of draw //
     if (playerSelection === 'paper') {
         if (computerSelection === 'rock') {
             playerScore++
             totalRounds++
-            resultsFunc(playerScore, playerScoreText, computerHealthBar);
+            resultsFunc(playerScore, playerScoreText, computerHealthBar);  // Functions that accepts parameters to dynamically modify the dom //
             computerHealthBarCount--;
-            console.log(`***Player score is ${playerScore}***`)
-            console.log(`***Computer Score is ${computerScore}***`)
+            /* console.log(`***Player score is ${playerScore}***`)
+            console.log(`***Computer Score is ${computerScore}***`) */
         }
         else {
             computerScore++
             totalRounds++
             resultsFunc(computerScore, computerScoreText, playerHealthBar);
             playerHealthBarCount--;
-            console.log(`***Player score is ${playerScore}***`)
-            console.log(`***Computer Score is ${computerScore}***`)
+            /* console.log(`***Player score is ${playerScore}***`)
+            console.log(`***Computer Score is ${computerScore}***`) */
         }
 
     } else if (playerSelection === 'rock') {
@@ -87,16 +91,16 @@ function playRound(playerSelection, computerSelection) {
             totalRounds++
             resultsFunc(playerScore, playerScoreText, computerHealthBar);
             computerHealthBarCount--;
-            console.log(`***Player score is ${playerScore}***`)
-            console.log(`***Computer Score is ${computerScore}***`)
+            /*  console.log(`***Player score is ${playerScore}***`)
+             console.log(`***Computer Score is ${computerScore}***`) */
         }
         else {
             computerScore++
             totalRounds++
             resultsFunc(computerScore, computerScoreText, playerHealthBar);
             playerHealthBarCount--;
-            console.log(`***Player score is ${playerScore}***`)
-            console.log(`***Computer Score is ${computerScore}***`)
+            /*   console.log(`***Player score is ${playerScore}***`)
+              console.log(`***Computer Score is ${computerScore}***`) */
         }
     }
     else if (playerSelection === 'scissors') {
@@ -105,16 +109,16 @@ function playRound(playerSelection, computerSelection) {
             totalRounds++
             resultsFunc(playerScore, playerScoreText, computerHealthBar);
             computerHealthBarCount--;
-            console.log(`***Player score is ${playerScore}***`)
-            console.log(`***Computer Score is ${computerScore}***`)
+            /*  console.log(`***Player score is ${playerScore}***`)
+             console.log(`***Computer Score is ${computerScore}***`) */
         }
         else {
             computerScore++
             totalRounds++
             resultsFunc(computerScore, computerScoreText, playerHealthBar);
             playerHealthBarCount--;
-            console.log(`***Player score is ${playerScore}***`)
-            console.log(`***Computer Score is ${computerScore}***`)
+            /* console.log(`***Player score is ${playerScore}***`)
+            console.log(`***Computer Score is ${computerScore}***`) */
 
         }
     }
@@ -147,20 +151,25 @@ resetButton.addEventListener('click', reset);
 
 
 
-function reset(className) {
-    console.log(playerHealthBarCount)
-    console.log(computerHealthBarCount)
+function reset() {
+    /* console.log(playerHealthBarCount)
+    console.log(computerHealthBarCount) */
 
+    // Adds the divs back to the healthbar //
     reAddDivs(playerHealthBarCount, 'player-healthsection', playerHealthBar);
     reAddDivs(computerHealthBarCount, 'computer-healthsection', computerHealthBar);
 
+    // Removes the choices from the player div //
     removeChildren(playerChoicesContainer);
     removeChildren(computerChoicesContainer);
 
+    // Resets game stats //
     playerHealthBarCount = 5;
     computerHealthBarCount = 5;
     playerScore = 0;
     computerScore = 0;
+
+    // resets dom //
     playerScoreText.innerText = 0;
     computerScoreText.innerText = 0;
     overlay.classList.remove('toggled');
